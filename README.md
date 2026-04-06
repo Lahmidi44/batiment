@@ -1,4 +1,3 @@
-[synthese_risques_kenitra (2).html](https://github.com/user-attachments/files/26521057/synthese_risques_kenitra.2.html)
 <!DOCTYPE html>
 <html>
 <head>
