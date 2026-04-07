@@ -26,19 +26,34 @@ Notebook Google Colab pour une **étude géomatique complète** d'un site géogr
 - **[OpenTopoData](https://www.opentopodata.org/)** – Altitude SRTM 90 m
 - **[USGS Earthquake API](https://earthquake.usgs.gov/fdsnws/event/1/)** – Séismes historiques
 
+## 🌐 Site web en ligne
+
+Le notebook génère automatiquement un site web complet et le publie sur GitHub Pages :
+
+👉 **https://lahmidi44.github.io/batiment/**
+
 ## 🛠️ Utilisation
 
 1. Cliquez sur le badge **Open in Colab** ci-dessus
-2. Dans la cellule **"Définition des coordonnées du site"**, modifiez :
+2. Dans la cellule **⚙️ TOUS LES PARAMÈTRES**, modifiez :
    ```python
-   LATITUDE  = 33.5731   # Votre latitude
-   LONGITUDE = -7.5898   # Votre longitude
-   NOM_SITE  = 'Casablanca, Maroc'  # Nom de votre site
+   LATITUDE   = 33.5731        # Votre latitude
+   LONGITUDE  = -7.5898        # Votre longitude
+   NOM_SITE   = 'Casablanca, Maroc'
    DATE_DEBUT = '2024-01-01'
    DATE_FIN   = '2024-12-31'
+   # + rayon sismique, grille d'altitude, seuils de risque…
    ```
 3. Exécutez toutes les cellules (**Exécution > Tout exécuter**)
-4. Les cartes, graphiques et le rapport sont générés automatiquement et proposés en téléchargement
+4. Les cartes, graphiques et le rapport sont générés et proposés en téléchargement
+5. La cellule **🌐 Génération du site web** crée `index.html` (auto-contenu : carte Folium + figures en base64)
+6. La cellule **🚀 Déploiement GitHub Pages** publie `index.html` sur https://lahmidi44.github.io/batiment/
+
+### Déploiement GitHub Pages (étape 6)
+
+Ajoutez un secret `GITHUB_TOKEN` dans Colab (Paramètres → Secrets) :
+- Créez un token sur https://github.com/settings/tokens (scope `repo`)
+- Après exécution, le lien s'affiche directement dans le notebook
 
 ## 📦 Bibliothèques requises
 
@@ -49,6 +64,7 @@ Installées automatiquement dans la première cellule :
 
 | Fichier | Contenu |
 |---|---|
+| `index.html` | Site web complet auto-contenu (carte Folium + toutes les figures) |
 | `carte_site.html` | Carte interactive du site |
 | `carte_risques.html` | Carte multicouches des risques naturels |
 | `precipitations.png` | Analyse des précipitations |
