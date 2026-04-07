@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analyse Geomatique Kenitra</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/style.css" />
+</head>
+<body>
+  <header class="container">
+    <h1>Plateforme Geomatique - <span id="ville">Kenitra</span></h1>
+    <p class="subtitle">Carte Folium professionnelle + figures analytiques extraites de votre travail.</p>
+  </header>
+
+  <main class="container">
+    <section class="grid metrics">
+      <article class="card"><div class="kpi">Coordonnees</div><div class="val" id="coord">-</div></article>
+      <article class="card"><div class="kpi">Surface</div><div class="val" id="surface">-</div></article>
+      <article class="card"><div class="kpi">Altitude moyenne</div><div class="val" id="alt">-</div></article>
+      <article class="card"><div class="kpi">Pente moyenne</div><div class="val" id="pente">-</div></article>
+      <article class="card"><div class="kpi">Climat (T / P)</div><div class="val" id="climat">-</div></article>
+    </section>
+
+    <section class="grid metrics">
+      <article class="card">
+        <div class="kpi">Risque inondation</div>
+        <div class="val" id="inondation-score">-</div>
+        <span id="inondation-niveau" class="badge">-</span>
+      </article>
+      <article class="card">
+        <div class="kpi">Risque glissement</div>
+        <div class="val" id="glissement-score">-</div>
+        <span id="glissement-niveau" class="badge">-</span>
+      </article>
+      <article class="card">
+        <div class="kpi">Risque sismique</div>
+        <div class="val" id="sismique-score">-</div>
+        <span id="sismique-niveau" class="badge">-</span>
+      </article>
+    </section>
+
+    <section class="grid main-layout">
+      <article class="card">
+        <h2>Carte Folium</h2>
+        <p class="subtitle">Vue interactive publiee depuis votre export.</p>
+        <iframe src="./analyse_geomatique_kenitra.html" title="Carte Folium Kenitra"></iframe>
+        <p id="load-error" class="subtitle"></p>
+      </article>
+
+      <aside class="figure-panel">
+        <article class="card">
+          <h3>Figure 1 - Risques</h3>
+          <canvas id="riskChart"></canvas>
+        </article>
+        <article class="card">
+          <h3>Figure 2 - Climat</h3>
+          <canvas id="climateChart"></canvas>
+        </article>
+        <article class="card">
+          <h3>Figure 3 - Profil altimetrique</h3>
+          <canvas id="altChart"></canvas>
+        </article>
+      </aside>
+    </section>
+
+    <section class="table-wrap">
+      <h2>Points MAT extraits</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>X</th>
+            <th>Y</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Altitude (m)</th>
+          </tr>
+        </thead>
+        <tbody id="points-body"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer class="container">
+    Donnees: ERA5, OpenTopoData, USGS. Site statique compatible GitHub Pages.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="./assets/app.js"></script>
+</body>
+</html>
